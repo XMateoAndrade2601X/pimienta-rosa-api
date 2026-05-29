@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using PimientaRosa.API.Data;
@@ -96,6 +97,7 @@ public class PedidosController : ControllerBase
 
     // ✅ PATCH /api/pedidos/{id}/estado — Actualizar estado (para ti, el admin)
     [HttpPatch("{id}/estado")]
+    [Authorize]
     public async Task<IActionResult> ActualizarEstado(int id, [FromBody] ActualizarEstadoDto dto)
     {
         var pedido = await _db.Pedidos.FindAsync(id);
@@ -138,6 +140,7 @@ public class PedidosController : ControllerBase
 
     // ✅ GET /api/pedidos — Listar todos (para tu panel admin)
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> ListarPedidos([FromQuery] string? fecha)
     {
         var query = _db.Pedidos.AsQueryable();
@@ -170,6 +173,7 @@ public class PedidosController : ControllerBase
 
     // PATCH /api/pedidos/{id}/confirmar-pago
     [HttpPatch("{id}/confirmar-pago")]
+    [Authorize]
     public async Task<IActionResult> ConfirmarPago(int id)
     {
         var pedido = await _db.Pedidos.FindAsync(id);
@@ -205,6 +209,7 @@ public class PedidosController : ControllerBase
     }
     // GET /api/pedidos/pendientes-pago
     [HttpGet("pendientes-pago")]
+
     public async Task<IActionResult> PendientesPago()
     {
         var pedidos = await _db.Pedidos

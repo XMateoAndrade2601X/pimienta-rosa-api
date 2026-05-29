@@ -11,6 +11,7 @@ public class AppDbContext : DbContext
     public DbSet<Pedido> Pedidos { get; set; }
     public DbSet<MenuDia> MenusDia { get; set; }
 
+    public DbSet<AdminUser> AdminUsers { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Número de pedido único
