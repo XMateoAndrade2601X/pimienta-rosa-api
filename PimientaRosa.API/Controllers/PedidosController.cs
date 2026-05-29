@@ -208,7 +208,7 @@ public class PedidosController : ControllerBase
     public async Task<IActionResult> PendientesPago()
     {
         var pedidos = await _db.Pedidos
-            .Where(p => p.EstadoPago == "Pendiente")
+            .Where(p => p.EstadoPago == "Pendiente ")
             .OrderBy(p => p.FechaCreacion)
             .Select(p => new {
                 p.Id,
