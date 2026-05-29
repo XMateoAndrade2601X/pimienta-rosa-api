@@ -4,9 +4,10 @@ EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["PimientaRosa.API.csproj", "."]
-RUN dotnet restore
+COPY ["PimientaRosa.API/PimientaRosa.API.csproj", "PimientaRosa.API/"]
+RUN dotnet restore "PimientaRosa.API/PimientaRosa.API.csproj"
 COPY . .
+WORKDIR "/src/PimientaRosa.API"
 RUN dotnet build -c Release -o /app/build
 
 FROM build AS publish
