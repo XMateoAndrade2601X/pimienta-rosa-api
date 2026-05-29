@@ -1,0 +1,7 @@
+[phases.build]
+cmds = [
+  "dotnet publish PimientaRosa.API/PimientaRosa.API.csproj -c Release -o /app"
+]
+
+[start]
+cmd = "dotnet /app/PimientaRosa.API.dll"
