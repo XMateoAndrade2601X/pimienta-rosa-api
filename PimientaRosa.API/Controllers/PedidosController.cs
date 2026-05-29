@@ -200,7 +200,7 @@ public class PedidosController : ControllerBase
             pedido.NumeroPedido,
             pedido.EstadoPago,
             Estado = pedido.Estado.ToString(),
-            mensaje = "Pago confirmado, pedido en preparación"
+            mensaje = "Pago confirmado, pedido encpreparación"
         });
     }
     // GET /api/pedidos/pendientes-pago
